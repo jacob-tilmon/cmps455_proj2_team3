@@ -37,6 +37,4 @@ public class Main {
     public static void capabilityList(){
 
     }
-
-
 }
