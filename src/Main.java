@@ -28,12 +28,24 @@ public class Main {
             System.out.println("Unexpected Tag. Please try again.");
         }
     }
+
+
+
     public static void accessMatrix(){
 
+        //Jacob created access matrix
+        //implementing on objects
+
     }
+
+
+
     public static void accessList(){
 
     }
+
+
+
     public static void capabilityList(){
 
     }
