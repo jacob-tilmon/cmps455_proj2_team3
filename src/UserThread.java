@@ -1,2 +1,9 @@
-public class UserThread {
+public class UserThread implements Runnable{
+
+
+    @Override
+    public void run(){
+
+    }
+
 }
