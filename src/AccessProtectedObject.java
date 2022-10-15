@@ -8,9 +8,9 @@ public class AccessProtectedObject {
     public AccessProtectedObject() {
     }
 
-    public AccessProtectedObject(String newWord) {
-        this.word = newWord;
-    }
+    //public AccessProtectedObject(String newWord) {
+    //    this.word = newWord;
+    //}
 
     public void read() {
         try {

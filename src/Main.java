@@ -66,14 +66,16 @@ public class Main {
             }
             System.out.println();
         }
+
         ArrayList<AccessProtectedObject> objects = new ArrayList<>();
         for(int i = 0; i < M; i++){
             AccessProtectedObject obj = new AccessProtectedObject();
             objects.add(obj);
         }
+
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < N; i++){
-            Runnable t1 = new UserThread();
+            Runnable t1 = new UserThread(matrix, objects, i);
             Thread t2 = new Thread(t1);
             threads.add(t2);
         }
