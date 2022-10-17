@@ -1,21 +1,21 @@
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class AccessProtectedObject {
     String word="start";
-    static Semaphore area = new Semaphore(1);
+    Semaphore area = new Semaphore(1);
+    Random random = new Random();
 
     public AccessProtectedObject() {
     }
 
-    //public AccessProtectedObject(String newWord) {
-    //    this.word = newWord;
-    //}
-
-    public void read() {
+    public void read(int threadId, int domain, int obj) {
         try {
             area.acquire();
-            System.out.println(word);
+            int yield = random.nextInt(5)+3;
+            for( int i = 0; i<yield; i++){ Thread.yield(); }
+            System.out.println("Thread["+threadId+"] from Domain "+domain+" has read '"+word+"' from Object "+obj);
             area.release();
 
         } catch (InterruptedException e) {
@@ -26,6 +26,8 @@ public class AccessProtectedObject {
     public void write(String newWord) {
         try {
             area.acquire();
+            int yield = random.nextInt(5)+3;
+            for( int i = 0; i<yield; i++){ Thread.yield(); }
             this.word = newWord;
             area.release();
         } catch (InterruptedException e) {

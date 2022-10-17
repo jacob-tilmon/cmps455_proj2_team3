@@ -61,8 +61,9 @@ public class Main {
             }
         }
         for(int i = 0; i < N; i++){
+            System.out.print("D"+i);
             for(int j = 0; j < M+N; j++) {
-                System.out.print(matrix[i][j]+"\t");
+                System.out.format("%10s", matrix[i][j] + "\t");
             }
             System.out.println();
         }
@@ -75,7 +76,7 @@ public class Main {
 
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < N; i++){
-            Runnable t1 = new UserThread(matrix, objects, i);
+            Runnable t1 = new UserThread(matrix, objects, i,N,M);
             Thread t2 = new Thread(t1);
             threads.add(t2);
         }
