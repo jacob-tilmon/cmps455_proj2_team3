@@ -60,6 +60,15 @@ public class Main {
                 }
             }
         }
+        //printing out the objects title
+        for(int i =0; i <M; i++){
+            System.out.format("%10s", "F" + i + "\t");
+        }
+        //printing out the domains allow or - title
+        for(int i = 0; i <N; i++)
+        {System.out.format("%10s", "D" + i +"\t");}
+        System.out.println();
+        //printing out the domain column on the left
         for(int i = 0; i < N; i++){
             System.out.print("D"+i);
             for(int j = 0; j < M+N; j++) {
@@ -67,6 +76,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println();
 
         ArrayList<AccessProtectedObject> objects = new ArrayList<>();
         for(int i = 0; i < M; i++){
