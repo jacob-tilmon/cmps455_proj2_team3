@@ -10,16 +10,16 @@ public class UserThread implements Runnable {
 
     Random rand = new Random();
     String[][] accessMatrix; //passed in main
-    ArrayList<AccessProtectedObject> accessRights;
+    ArrayList<AccessProtectedObject> objects;
     int domainNumber;
     int id;
     int N;
     int M;
     String[] randomWords = {"tacos","chicken","lobster","dog","Lebron"};
 
-    public UserThread(String[][] accessMatrix, ArrayList<AccessProtectedObject> accessRights, int domainNumber, int N, int M){
+    public UserThread(String[][] accessMatrix, ArrayList<AccessProtectedObject> objects, int domainNumber, int N, int M){
         this.accessMatrix = accessMatrix;
-        this.accessRights = accessRights;
+        this.objects = objects;
         this.domainNumber = domainNumber;
         id = domainNumber;
         this.N = N;
@@ -57,13 +57,13 @@ public class UserThread implements Runnable {
                 //System.out.println("Something is possible");
                 if (X < M) {
                     if (randomRequest.equals("R")) {
-                        accessRights.get(X).read(id,domainNumber,X);
+                        objects.get(X).read(id,domainNumber,X);
                     }
                     if (randomRequest.equals("W")) {
                         String someWord = "";
                         someWord = randomWords[rand.nextInt(randomWords.length)];
                         System.out.println("Thread["+id+"] is writing '"+someWord+"' to Object "+ X);
-                        accessRights.get(X).write(someWord);
+                        objects.get(X).write(someWord);
                     }
                 } else {
                     domainNumber = (M + N) - X - 1;
