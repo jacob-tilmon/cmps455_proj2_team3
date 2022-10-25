@@ -10,6 +10,7 @@ public class UserThreadT3 implements Runnable{
     int curDomain;
     int M;
     int N;
+    String[] words = {"man","beast","sun","autumn","leaves"};
     Random random = new Random();
 
     public UserThreadT3(ArrayList<ArrayList<String>> domains,int id, ArrayList<AccessProtectedObject> objs, int M,int N){
@@ -56,7 +57,8 @@ public class UserThreadT3 implements Runnable{
                     }
                     if (accessReq.equals("W")) {
                         System.out.println("Thread[" + id + "] is writing to object " + X);
-                        objects.get(X).write("NewWord");
+                        int word = random.nextInt(words.length);
+                        objects.get(X).write(words[word]);
                     }
                 } else
                     curDomain = (N + M) - X - 1;
