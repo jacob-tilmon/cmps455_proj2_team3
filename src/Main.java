@@ -164,8 +164,55 @@ public class Main {
         }
         for (Thread t : threads) t.start();
     }
+<<<<<<< HEAD
 
     public static void capabilityList(int N, int M) {
+=======
+    public static void capabilityList(int N, int M){
+        ArrayList<ArrayList<String>> domains = new ArrayList<>();
+        for (int i = 0; i < N; i++){
+            ArrayList<String> newDomain = new ArrayList<>();
+            for (int j = 0; j < M+N; j++){
+                if (j < M){
+                    int gen = rand.nextInt(4);
+                    if (gen == 0) {newDomain.add("-"); }
+                    if (gen == 1) { newDomain.add("R"); }
+                    if (gen == 2) { newDomain.add("W"); }
+                    if (gen == 3) { newDomain.add("R/W"); }
+                }
+                else{
+                    int gen = rand.nextInt(2);
+                    if (gen == 0) { newDomain.add("-"); }
+                    if (gen == 1) { newDomain.add("allow"); }
+                }
+            }
+            domains.add(newDomain);
+        }
+>>>>>>> task3
 
+        System.out.println("Number of Domains " +N);
+        System.out.println("Number of Objects: " + (M+N));
+        for(int i = 0; i<N; i++){
+            System.out.print("Domain " + i );
+            System.out.println();
+            for(int j = 0; j<(N+M); j++){
+                System.out.print(" " +domains.get(i).get(j)+"\t");
+            }
+            System.out.println();
+        }
+
+        ArrayList<AccessProtectedObject> objects = new ArrayList<>();
+        for (int i = 0; i <M+N;i++){
+            AccessProtectedObject newObj = new AccessProtectedObject();
+            objects.add(newObj);
+        }
+        //print capability lists
+        ArrayList<Thread> threads = new ArrayList<>();
+        for (int i = 0; i<N; i++){
+            Runnable t1 = new UserThreadT3(domains,i,objects,M,N);
+            Thread t2 = new Thread(t1);
+            threads.add(t2);
+        }
+        for(Thread t : threads) t.start();
     }
 }
