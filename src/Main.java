@@ -164,10 +164,6 @@ public class Main {
         }
         for (Thread t : threads) t.start();
     }
-<<<<<<< HEAD
-
-    public static void capabilityList(int N, int M) {
-=======
     public static void capabilityList(int N, int M){
         ArrayList<ArrayList<String>> domains = new ArrayList<>();
         for (int i = 0; i < N; i++){
@@ -188,7 +184,6 @@ public class Main {
             }
             domains.add(newDomain);
         }
->>>>>>> task3
 
         System.out.println("Number of Domains " +N);
         System.out.println("Number of Objects: " + (M+N));
