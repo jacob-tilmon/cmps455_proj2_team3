@@ -11,8 +11,8 @@ public class Main {
 
         if (args[0].equals("-S")) {
 
-            int N = 0;
-            int M = 0;
+            int N;
+            int M;
             N = rand.nextInt(4) + 3;
             M = rand.nextInt(4) + 3;
             if (args.length == 1) {
@@ -58,12 +58,18 @@ public class Main {
                         matrix[i][j] = "R/W";
                     }
                 } else {
-                    int gen = rand.nextInt(2);
-                    if (gen == 0) {
+                    if (i == j-M) {
+                        //System.out.println("ABC"); //debugging line
                         matrix[i][j] = "-";
                     }
-                    if (gen == 1) {
-                        matrix[i][j] = "allow";
+                    else {
+                        int gen = rand.nextInt(2);
+                        if (gen == 0) {
+                            matrix[i][j] = "-";
+                        }
+                        if (gen == 1) {
+                            matrix[i][j] = "allow";
+                        }
                     }
                 }
             }
@@ -177,16 +183,23 @@ public class Main {
                     if (gen == 3) { newDomain.add("R/W"); }
                 }
                 else{
-                    int gen = rand.nextInt(2);
-                    if (gen == 0) { newDomain.add("-"); }
-                    if (gen == 1) { newDomain.add("allow"); }
+                    if (i == j-M) newDomain.add("-");
+                    else {
+                        int gen = rand.nextInt(2);
+                        if (gen == 0) {
+                            newDomain.add("-");
+                        }
+                        if (gen == 1) {
+                            newDomain.add("allow");
+                        }
+                    }
                 }
             }
             domains.add(newDomain);
         }
 
         System.out.println("Number of Domains " +N);
-        System.out.println("Number of Objects: " + (M+N));
+        System.out.println("Number of Objects: " + (M));
         for(int i = 0; i<N; i++){
             System.out.print("Domain " + i );
             System.out.println();
