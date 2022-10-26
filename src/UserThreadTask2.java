@@ -67,6 +67,10 @@ public class UserThreadTask2 implements Runnable {
                 }
             } else { // when access is denied
                 System.out.println("Thread[" + id + "] does not have permission.");
+                int yield = rand.nextInt(5) + 3;
+                for (int j = 0; j < yield; j++) {
+                    Thread.yield();
+                }
             }
             int yield = rand.nextInt(5) + 3;
             for (int j = 0; j < yield; j++) {
